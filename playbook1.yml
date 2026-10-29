@@ -1,0 +1,16 @@
+- name: Install and start Nginx
+  hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: Install Nginx
+      ansible.builtin.dnf:
+        name: nginx
+        state: present
+
+    - name: Start Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
